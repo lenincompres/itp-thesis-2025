@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Livestream</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Pastel Palette */
+      --primary: #A0C4FF; /* Soft Blue */
+      --primary-light: #EAF2FF; /* Lighter Blue */
+      --secondary: #F1F1F1; /* Light Gray */
+      --text: #000000; /* Dark Gray -> Black for High Contrast */
+      --text-light: #333333; /* Medium Gray -> Darker Gray for High Contrast */
+      --break: #FFADAD; /* Soft Red */
+      --break-light: #FFE5E5; /* Lighter Red */
+      --border: #EAEAEA; /* Very Light Gray */
+      --white: #FFFFFF;
+      --bg-body: #FDFDFF; /* Very Light Gray/Off-white */
+      --banner-text: #000000; /* Muted brown -> Black for High Contrast */
+      --border-radius-large: 20px; /* Super round corners */
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Nunito', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, 
+        #A0C4FF, /* Soft Blue */
+        #BDECB6, /* Light Green */
+        #FFFDBB, /* Light Yellow */
+        #FFDAC1, /* Peach */
+        #FFADAD, /* Soft Red */
+        #D7B0FF  /* Light Purple */
+      );
+      background-size: 600% 600%;
+      animation: gradientBG 15s ease infinite;
+      line-height: 1.5;
+      padding: 0;
+    }
+    
+    .site-banner {
+      background-color: var(--white);
+      color: var(--banner-text);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-family: 'Nunito', sans-serif;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .site-nav {
+      background-color: var(--white);
+      padding: 0.75rem 2rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      display: flex;
+      justify-content: flex-start;
+      gap: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .site-nav a {
+      color: var(--text); 
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.2s ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--text);
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto 0;
+      padding: 2rem;
+      background-color: var(--white);
+      border-radius: var(--border-radius-large); 
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+      min-height: 400px;
+    }
+    
+    h1 {
+      font-size: 1.8rem; 
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+      text-align: center; 
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <nav class="site-nav">
+    <a href="/">Home</a>
+    <a href="http://itp.nyu.edu/thesis/archive" target="_blank">Thesis Archive</a>
+  </nav>
+
+  <div class="container">
+    <h1>Livestream</h1>
+    <!-- Content for livestream page will go here -->
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log("Livestream page loaded");
+    });
+  </script>
+</body>
+</html> 

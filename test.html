@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Capstone / Thesis Week Schedule</title>
+  <style>
+    body { font-family: sans-serif; }
+    .day-button {
+      margin: 5px;
+      padding: 10px 20px;
+      background-color: #eee;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .day-button:hover { background-color: #ddd; }
+    .schedule { display: none; margin-top: 20px; }
+    .visible { display: block; }
+    ul { list-style-type: none; padding: 0; }
+    li { margin-bottom: 5px; }
+  </style>
+  <script>
+    function showSchedule(dayId) {
+      var schedules = document.getElementsByClassName('schedule');
+      for (var i = 0; i < schedules.length; i++) {
+        schedules[i].classList.remove('visible');
+      }
+      document.getElementById(dayId).classList.add('visible');
+    }
+  </script>
+</head>
+<body>
+  <h2>Capstone / Thesis Week Schedule</h2>
+  <div>
+    <button class="day-button" onclick="showSchedule('Monday,_May_5')">Monday, May 5</button>
+    <button class="day-button" onclick="showSchedule('Tuesday,_May_6')">Tuesday, May 6</button>
+    <button class="day-button" onclick="showSchedule('Wednesday,_May_7')">Wednesday, May 7</button>
+    <button class="day-button" onclick="showSchedule('Thursday,_May_8')">Thursday, May 8</button>
+    <button class="day-button" onclick="showSchedule('Friday,_May_9')">Friday, May 9</button>
+
+    <div id="Monday,_May_5" class="schedule">
+      <h3>Monday, May 5</h3>
+      <ul>
+      </ul>
+    </div>
+
+    <div id="Tuesday,_May_6" class="schedule">
+      <h3>Tuesday, May 6</h3>
+      <ul>
+      </ul>
+    </div>
+
+    <div id="Wednesday,_May_7" class="schedule">
+      <h3>Wednesday, May 7</h3>
+      <ul>
+        <li>2 - 9:12:AM</li>
+        <li>3 - 9:24:AM</li>
+        <li>4 - 9:36:AM</li>
+        <li>5 - 9:48:AM</li>
+        <li>6 - 10:00:AM</li>
+        <li>7 - 10:12:AM</li>
+        <li>BREAK</li>
+        <li>8 - 10:36:AM</li>
+        <li>9 - 10:48:AM</li>
+      </ul>
+    </div>
+
+    <div id="Thursday,_May_8" class="schedule">
+      <h3>Thursday, May 8</h3>
+      <ul>
+        <li>1 - 9:00:AM</li>
+        <li>2 - 9:12:AM</li>
+        <li>3 - 9:24:AM</li>
+        <li>4 - 9:36:AM</li>
+        <li>5 - 9:48:AM</li>
+        <li>6 - 10:00:AM</li>
+        <li>7 - 10:12:AM</li>
+        <li>BREAK</li>
+        <li>8 - 10:36:AM</li>
+        <li>9 - 10:48:AM</li>
+      </ul>
+    </div>
+
+    <div id="Friday,_May_9" class="schedule">
+      <h3>Friday, May 9</h3>
+      <ul>
+        <li>1 - 9:12:AM</li>
+        <li>2 - 9:24:AM</li>
+        <li>3 - 9:36:AM</li>
+        <li>4 - 9:48:AM</li>
+        <li>5 - 10:00:AM</li>
+        <li>6 - 10:12:AM</li>
+        <li>7 - 10:24:AM</li>
+        <li>BREAK</li>
+        <li>8 - 10:48:AM</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

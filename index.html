@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capstone / Thesis Week Schedule</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Pastel Palette */
+      --primary: #A0C4FF; /* Soft Blue */
+      --primary-light: #EAF2FF; /* Lighter Blue */
+      --secondary: #F1F1F1; /* Light Gray */
+      --text: #000000; /* Dark Gray -> Black for High Contrast */
+      --text-light: #333333; /* Medium Gray -> Darker Gray for High Contrast */
+      --break: #FFADAD; /* Soft Red */
+      --break-light: #FFE5E5; /* Lighter Red */
+      --border: #EAEAEA; /* Very Light Gray */
+      --white: #FFFFFF;
+      --bg-body: #FDFDFF; /* Very Light Gray/Off-white */
+      --banner-text: #000000; /* Muted brown -> Black for High Contrast */
+      --border-radius-large: 20px; /* Super round corners */
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Nunito', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; /* Added Nunito */
+      color: var(--text);
+      /* Updated background with a gradient */
+      background: linear-gradient(135deg, 
+        #A0C4FF, /* Soft Blue */
+        #BDECB6, /* Light Green */
+        #FFFDBB, /* Light Yellow */
+        #FFDAC1, /* Peach */
+        #FFADAD, /* Soft Red */
+        #D7B0FF  /* Light Purple */
+      );
+      background-size: 600% 600%; /* Make gradient larger for smoother transition */
+      animation: gradientBG 15s ease infinite; /* Animate the gradient */
+      /* Removed gradient background - will be covered */
+      background-color: var(--bg-body);
+      line-height: 1.5;
+      padding: 0; /* Remove body padding, handle spacing with banner/container */
+    }
+    
+    .site-banner {
+      color: var(--banner-text);
+      padding: 0; /* REMOVED padding */
+      line-height: 0;
+      /* Fixed Full Viewport Banner */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      background-color: #000; /* Fallback color if image fails */
+    }
+
+    .site-banner img {
+      display: block; /* Ensure image takes full width and removes bottom space */
+      width: 100%; /* Already set inline, but good to have here */
+      height: 100%; /* Make image fill the banner height */
+      object-fit: cover; /* Cover the area, cropping if needed */
+    }
+
+    /* Style for the scroll-down button on the banner */
+    .scroll-down-button {
+      position: absolute; /* Position relative to the fixed banner */
+      top: 85%; /* Position lower part of the banner */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2; /* Above banner image, below nav */
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      background-color: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: var(--border-radius-large);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      backdrop-filter: blur(3px);
+    }
+
+    .scroll-down-button:hover {
+      background-color: var(--white);
+      transform: translateX(-50%) translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 101;
+      padding: 1rem; /* Add some spacing */
+    }
+
+    .site-nav a {
+      color: var(--text); /* Changed from --primary */
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      display: block; /* Make links block-level for easier spacing */
+      margin-bottom: 0.5rem; /* Space between links */
+      padding: 0.4rem 0.8rem; /* Padding inside link */
+      background-color: rgba(255, 255, 255, 0.85); /* Updated Semi-transparent background */
+      border-radius: var(--border-radius-large); /* Use variable for consistent rounding */
+      backdrop-filter: blur(3px); /* Frosted glass effect */
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .site-nav a:hover {
+      color: var(--text);
+      background-color: var(--white); /* Use solid white on hover */
+    }
+    
+    .container {
+      max-width: 900px; /* Reduced width */
+      margin: 100vh auto 2rem; /* Start below banner, keep horizontal auto margin */
+      padding: 2rem;
+      background-color: var(--white);
+      border-radius: var(--border-radius-large); /* Use variable */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Soft shadow */
+      position: relative; /* Needed for z-index stacking */
+      z-index: 10; /* Above banner, below nav */
+    }
+    
+    h1 {
+      font-size: 1.8rem; /* Slightly smaller */
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+      text-align: center; /* Center title */
+    }
+    
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .tab-button {
+      padding: 0.75rem 1.25rem;
+      background-color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius-large); /* Use variable */
+      font-weight: 600; /* Bolder */
+      font-size: 0.9rem; /* Slightly smaller */
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--text);
+    }
+    
+    .tab-button:hover {
+      background-color: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--text); /* Changed from --primary */
+    }
+    
+    .tab-button.active {
+      background-color: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+    
+    .schedule {
+      display: none;
+    }
+    
+    .schedule.visible {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .timeline {
+      position: relative;
+    }
+    
+    .time-labels {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 60px;
+      background-color: var(--white);
+      z-index: 10;
+      padding-bottom: 0.5rem;
+    }
+    
+    .time-label {
+      flex: 1;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+    
+    .slots {
+      position: relative;
+      padding-top: 1rem;
+      max-width: 95%; /* Constrain slots width slightly within container */
+      margin: 0 auto; /* Center the slots area */
+    }
+    
+    .time-slot {
+      display: flex;
+      margin-bottom: 1.2rem; /* Increased space to prevent overlap */
+      height: 3.2rem; /* Slightly shorter */
+      position: relative;
+      align-items: center; /* Align items vertically */
+    }
+    
+    .time {
+      width: 70px; /* Slightly narrower time */
+      font-size: 0.8rem;
+      color: var(--text-light);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      justify-content: flex-end; /* Right align time */
+      padding-right: 0.75rem; /* Space between time and slot */
+    }
+    
+    .slot-content {
+      flex: 1;
+      background-color: var(--white);
+      border: none; /* Remove base border */
+      border-top: 1px solid rgba(255, 255, 255, 0.5); /* Lighter top */
+      border-radius: var(--border-radius-large); /* Use variable */
+      padding: 0.6rem 0.9rem; /* Adjusted padding */
+      font-size: 0.9rem; /* Adjusted font size */
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      min-width: 0; /* Allow shrinking */
+    }
+    
+    .slot-content:hover {
+      /* border-color: var(--primary); Keep base hover border */
+      border-color: var(--text-light); /* Use a darker neutral border on hover */
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Softer shadow */
+    }
+    
+    /* 3D Border Effect for Slot Content (Students & Breaks) */
+    .student-slot .slot-content,
+    .break-slot .slot-content {
+        border: none; /* Remove base border */
+        border-top: 1px solid rgba(255, 255, 255, 0.5); /* Lighter top */
+        border-radius: var(--border-radius-large); /* Use variable */
+        padding: 0.6rem 0.9rem; /* Adjusted padding */
+        font-size: 0.9rem; /* Adjusted font size */
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        min-width: 0; /* Allow shrinking */
+    }
+    
+    .empty-slot .slot-content {
+      background-color: var(--bg-body); /* Use body bg for empty */
+      border: 1px dashed var(--border);
+      color: var(--text-light);
+      flex-shrink: 0; /* Prevent shrinking */
+    }
+    
+    .break-slot .slot-content {
+      background-color: var(--break-light);
+      border-color: var(--break);
+      color: var(--text); /* Changed from --break */
+      font-weight: 600;
+    }
+    
+    .student-slot .student-name {
+      font-weight: 600; /* Bolder names */
+      white-space: nowrap; /* Prevent wrapping */
+      overflow: hidden; /* Hide overflow */
+      text-overflow: ellipsis; /* Add ellipsis */
+    }
+    
+    .student-slot .slot-number {
+      background-color: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      width: 22px; /* Adjusted size */
+      height: 22px; /* Adjusted size */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem; /* Adjusted size */
+      margin-right: 0.6rem; /* Adjusted margin */
+      flex-shrink: 0; /* Prevent shrinking */
+      /* 3D Border Effect for Slot Number */
+      border-top: 1px solid rgba(255, 255, 255, 0.6); /* Lighter top */
+      border-left: 1px solid rgba(255, 255, 255, 0.5); /* Lighter left */
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);  /* Darker bottom */
+      border-right: 1px solid rgba(0, 0, 0, 0.2);   /* Darker right */
+      box-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Subtle drop shadow */
+      /* Ensure text contrasts with dynamic background */
+      /* color: var(--white); /* Set dynamically in JS now */
+      /* background-color: var(--primary); /* Set dynamically in JS now */
+    }
+    
+    .legend {
+      display: flex;
+      gap: 1.5rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      margin-right: 0.5rem;
+    }
+    
+    .legend-break .legend-color {
+      background-color: var(--break);
+    }
+    
+    .legend-empty .legend-color {
+      background-color: #F9FAFB;
+      border: 1px dashed var(--border);
+    }
+    
+    .legend-student .legend-color {
+      background-color: var(--primary);
+    }
+    
+    .visually-hidden {
+      display: none;
+    }
+    
+    .consolidated-empty-slot .slot-content {
+      background-color: var(--secondary); /* Use secondary gray */
+      border: 1px dashed var(--border);
+      color: var(--text-light);
+      font-style: italic;
+      height: auto; /* Allow height to adjust */
+      min-height: 3.2rem; /* Match new slot height */
+      padding: 0.8rem 1rem; /* Adjusted padding */
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--border-radius-large); /* Use variable */
+    }
+    
+    .consolidated-empty-slot .time {
+      display: none; /* Hide the individual time for consolidated slots */
+    }
+    
+    /* Section Styling */
+    .schedule-section {
+      border: 1px solid var(--border);
+      /* Folder-like corners: Rounded top, square bottom */
+      border-radius: 10px; /* Rounded all corners */
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      transition: background-color 0.3s ease;
+      position: relative; /* Needed for absolute positioning of the tab */
+      padding-top: 1rem; /* Adjust padding-top if needed based on tab */
+      margin-top: 30px; /* Increased margin-top for more tab clearance */
+      /* Remove background-clip if it causes issues */
+      /* background-clip: padding-box; */
+    }
+
+    .section-department-tab {
+        position: absolute;
+        top: -25px;
+        left: 15px;
+        background-color: inherit;
+        color: var(--text);
+        padding: 0.4rem 0.8rem;
+        border: 1px solid var(--border);
+        border-bottom: none;
+        border-radius: 8px 8px 0 0;
+        font-size: 0.75rem;
+        font-weight: 700;
+        z-index: 5;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .section-department-tab:hover {
+        text-decoration: underline;
+    }
+
+    .section-content {
+        /* Hidden by default - using max-height for transition */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        opacity: 0;
+        transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+    }
+
+    .schedule-section.expanded .section-content {
+        /* Adjust max-height as needed, should be larger than expected content */
+        max-height: 2000px; /* Increased value to accommodate more content */
+        opacity: 1;
+    }
+
+    .section-instructor {
+      font-weight: 600;
+      color: var(--text); /* Ensure contrast */
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem; /* Slightly smaller */
+      margin-top: 0rem; /* Remove space below the tab */
+      /* Mix blend mode can sometimes help text contrast on varied backgrounds, but can be complex */
+      /* mix-blend-mode: difference; */ /* Experiment if needed */
+    }
+    
+    /* Remove section-color-* classes as we'll use inline styles */
+    /*.schedule-section.section-color-1 { ... } etc. */
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Added animation for the background gradient */
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .time {
+        width: 60px;
+        font-size: 0.75rem;
+      }
+      
+      .slot-content {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+      }
+      
+      .student-slot .slot-number {
+        width: 20px;
+        height: 20px;
+        font-size: 0.7rem;
+        margin-right: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-banner">
+    <img src="/public/assets/banner.png" alt="IMA / ITP Thesis Capstone Banner" class="logo">
+    <!-- Button to scroll down to the schedule -->
+    <button id="viewScheduleBtn" class="scroll-down-button">View Schedule</button>
+  </div>
+  <nav class="site-nav">
+    <a href="livestream.html">Livestream</a>
+    <a href="http://itp.nyu.edu/thesis/archive" target="_blank">Thesis Archive</a>
+  </nav>
+
+  <div class="container">
+    <h1>Capstone / Thesis Week Schedule</h1>
+    
+    <div class="tabs">
+      <button class="tab-button active" data-day="monday">Monday, May 5</button>
+      <button class="tab-button" data-day="tuesday">Tuesday, May 6</button>
+      <button class="tab-button" data-day="wednesday">Wednesday, May 7</button>
+      <button class="tab-button" data-day="thursday">Thursday, May 8</button>
+      <button class="tab-button" data-day="friday">Friday, May 9</button>
+    </div>
+    
+    <div id="monday" class="schedule visible">
+      <h2>Monday, May 5</h2>
+      <div class="timeline">
+        <div class="slots">
+          <!-- Slots will be generated by JavaScript -->
+        </div>
+      </div>
+    </div>
+    
+    <div id="tuesday" class="schedule">
+      <h2>Tuesday, May 6</h2>
+      <div class="timeline">
+        <div class="slots">
+          <!-- Slots will be generated by JavaScript -->
+        </div>
+      </div>
+    </div>
+    
+    <div id="wednesday" class="schedule">
+      <h2>Wednesday, May 7</h2>
+      <div class="timeline">
+        <div class="slots">
+          <!-- Slots will be generated by JavaScript -->
+        </div>
+      </div>
+    </div>
+    
+    <div id="thursday" class="schedule">
+      <h2>Thursday, May 8</h2>
+      <div class="timeline">
+        <div class="slots">
+          <!-- Slots will be generated by JavaScript -->
+        </div>
+      </div>
+    </div>
+    
+    <div id="friday" class="schedule">
+      <h2>Friday, May 9</h2>
+      <div class="timeline">
+        <div class="slots">
+          <!-- Slots will be generated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() { // Added async
+      const tabs = document.querySelectorAll('.tab-button');
+      const schedules = document.querySelectorAll('.schedule');
+      const totalSectionColors = 4; // No longer needed for cycling
+      let scheduleData = {}; // To store fetched data
+      let instructorMap = {}; // To map instructor IDs to names AND colors
+
+      // --- Helper Functions ---
+      function parseTime(timeStr) {
+        if (!timeStr) return 0;
+        const [time, modifier] = timeStr.split(' ');
+        if (!time || !modifier) return 0; // Basic validation
+        let [hours, minutes] = time.split(':').map(Number);
+        if (isNaN(hours) || isNaN(minutes)) return 0; // More validation
+        if (modifier.toUpperCase() === 'PM' && hours !== 12) hours += 12;
+        if (modifier.toUpperCase() === 'AM' && hours === 12) hours = 0; // Midnight case
+        return hours * 60 + minutes; // Return total minutes from midnight
+      }
+
+      function formatTime(totalMinutes) {
+        let hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+        const modifier = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        if (hours === 0) hours = 12; // Handle 12 AM/PM
+        return `${hours}:${minutes.toString().padStart(2, '0')} ${modifier}`;
+      }
+
+      // --- Helper Function to Darken a Hex Color ---
+      function darkenColor(hexColor, amount) {
+        if (!hexColor || typeof hexColor !== 'string' || hexColor.charAt(0) !== '#') {
+            // console.warn("Invalid color passed to darkenColor:", hexColor);
+            return 'var(--primary-light)'; // Return default if invalid
+        }
+        let color = hexColor.slice(1); // Remove #
+        let num = parseInt(color, 16);
+
+        let r = (num >> 16) - amount;
+        let g = ((num >> 8) & 0x00FF) - amount;
+        let b = (num & 0x0000FF) - amount;
+
+        r = Math.max(0, r); // Clamp values to 0-255
+        g = Math.max(0, g);
+        b = Math.max(0, b);
+
+        r = Math.min(255, r);
+        g = Math.min(255, g);
+        b = Math.min(255, b);
+
+        let newColor = (r << 16) + (g << 8) + b;
+        return '#' + newColor.toString(16).padStart(6, '0');
+      }
+
+      // --- Helper Function to Lighten a Hex Color ---
+      function lightenColor(hexColor, amount) {
+        if (!hexColor || typeof hexColor !== 'string' || hexColor.charAt(0) !== '#') {
+            // console.warn("Invalid color passed to lightenColor:", hexColor);
+            return 'var(--primary-light)'; // Fallback
+        }
+        let color = hexColor.slice(1); // Remove #
+        let num = parseInt(color, 16);
+
+        let r = (num >> 16) + amount;
+        let g = ((num >> 8) & 0x00FF) + amount;
+        let b = (num & 0x0000FF) + amount;
+
+        r = Math.min(255, Math.max(0, r)); // Clamp values to 0-255
+        g = Math.min(255, Math.max(0, g));
+        b = Math.min(255, Math.max(0, b));
+
+        let newColor = (r << 16) + (g << 8) + b;
+        return '#' + newColor.toString(16).padStart(6, '0');
+      }
+
+      // --- Helper Function to Find Next Non-Empty/Non-Break Event ---
+      function findNextMeaningfulEventInfo(startTime, dayData, eventsMap, slotDuration, dayEndTime) {
+          for (let lookaheadTime = startTime + slotDuration; lookaheadTime < dayEndTime; lookaheadTime += slotDuration) {
+              const eventData = eventsMap.get(lookaheadTime);
+              if (eventData) {
+                  if (eventData.type === 'student') {
+                      const isExternal = !!eventData.from_section;
+                      const instructorIdForSection = isExternal ? eventData.from_section : eventData.instructorId;
+                      return { eventData, instructorIdForSection, time: lookaheadTime };
+                  } else if (eventData.type === 'break') {
+                      // Skip breaks when looking for the *next* section anchor
+                      continue;
+                  } else {
+                      // Found some other non-empty, non-break, non-student event type? Stop searching.
+                      return null; 
+                  }
+              }
+              // Implicitly skip empty slots (eventData is null)
+          }
+          return null; // No meaningful event found after startTime
+      }
+
+      // --- Schedule Rendering Logic ---
+      function renderSchedule(data) {
+        scheduleData = data; // Store for later use if needed
+        // Update instructorMap to include colors AND department
+        instructorMap = data.instructors.reduce((map, instr) => {
+            map[instr.id] = { name: instr.name, color: instr.color || '#FFFFFF', department: instr.department || 'N/A' }; // Added department
+            return map;
+        }, {});
+        
+        Object.keys(data.schedule).forEach(dayKey => {
+          const dayData = data.schedule[dayKey];
+          const dayElement = document.getElementById(dayKey);
+          if (!dayElement) {
+            console.error(`Schedule container for ${dayKey} not found.`);
+            return;
+          }
+          const slotsContainer = dayElement.querySelector('.slots');
+          if (!slotsContainer) {
+            console.error(`Slots container for ${dayKey} not found.`);
+            return;
+          }
+          
+          // Set h2 title from JSON data - Find h2 specific to the schedule div
+          const h2 = dayElement.querySelector('h2');
+          if (h2 && dayData.date) { // Check if dayData.date exists
+              h2.textContent = dayData.date;
+          } else if (h2) {
+              // Fallback if date isn't in JSON (e.g., use the ID)
+              h2.textContent = dayKey.charAt(0).toUpperCase() + dayKey.slice(1);
+          }
+
+          slotsContainer.innerHTML = ''; // Clear existing static content
+
+          generateAndDisplaySlots(dayKey, dayData, slotsContainer);
+        });
+        
+        // Ensure the initially active tab's content is visible
+        const activeTab = document.querySelector('.tab-button.active');
+        if (activeTab) {
+           const initialDay = activeTab.getAttribute('data-day');
+           const initialSchedule = document.getElementById(initialDay);
+           if (initialSchedule) {
+               schedules.forEach(s => s.classList.remove('visible'));
+               initialSchedule.classList.add('visible');
+           }
+        }
+      }
+      
+      function generateAndDisplaySlots(dayKey, dayData, slotsContainer) {
+        const eventsMap = new Map();
+        dayData.events.forEach(eventBlock => {
+            let currentEventTime = parseTime(eventBlock.startTime);
+            eventBlock.slots.forEach((slot, index) => {
+                // Store the original event block reference if needed, or just necessary data
+                eventsMap.set(currentEventTime + index * dayData.slotDuration, {
+                    ...slot,
+                    instructorId: eventBlock.instructorId, // Hosting instructor
+                    eventBlockStartTime: eventBlock.startTime
+                });
+            });
+        });
+
+        const dayStartTime = parseTime(dayData.startTime);
+        const dayEndTime = parseTime(dayData.endTime);
+        const slotDuration = dayData.slotDuration;
+
+        let finalElements = [];
+        let currentSection = null;
+        let currentSectionInstructorId = null;
+        let consecutiveEmptySlots = [];
+
+        for (let currentTime = dayStartTime; currentTime < dayEndTime; currentTime += slotDuration) {
+            const timeStr = formatTime(currentTime);
+            const eventData = eventsMap.get(currentTime);
+
+            if (eventData) {
+                // Skip student slots with no name (treat as empty)
+                if (eventData.type === 'student' && !eventData.name) {
+                    consecutiveEmptySlots.push({ time: timeStr });
+                    continue; // Skip the rest of the loop for this slot
+                }
+
+                // If we encounter an event, first process any accumulated empty slots
+                if (consecutiveEmptySlots.length > 0) {
+                    // Determine the instructor ID of the *next* meaningful slot for section matching
+                    let nextMeaningfulInstructorId = null;
+                    if (eventData.type === 'student') {
+                        nextMeaningfulInstructorId = eventData.instructorId; // Hosting instructor
+                    } else if (eventData.type === 'break') {
+                        // If the current event is a break, look *past* it for the next student slot
+                        const nextStudentInfo = findNextMeaningfulEventInfo(currentTime, dayData, eventsMap, slotDuration, dayEndTime);
+                        if (nextStudentInfo && nextStudentInfo.eventData.type === 'student') {
+                            nextMeaningfulInstructorId = nextStudentInfo.instructorIdForSection; // Hosting instructor of the student after the break
+                        }
+                        // If the next meaningful event isn't a student, we can't group the empty slot
+                    }
+                    // If eventData.type is something else, nextMeaningfulInstructorId remains null
+
+                    // Check if the empty block is surrounded by the same section
+                    const shouldIncludeEmptyInCurrentSection = currentSection &&
+                                                              currentSectionInstructorId !== null &&
+                                                              nextMeaningfulInstructorId !== null &&
+                                                              currentSectionInstructorId === nextMeaningfulInstructorId;
+
+                    const startTimeStr = consecutiveEmptySlots[0].time;
+                    const endTimeStr = formatTime(parseTime(consecutiveEmptySlots[consecutiveEmptySlots.length - 1].time) + slotDuration);
+                    const consolidatedSlot = document.createElement('div');
+                    consolidatedSlot.classList.add('time-slot', 'consolidated-empty-slot');
+                    consolidatedSlot.innerHTML = `
+                      <div class="time"></div>
+                      <div class="slot-content">${startTimeStr} - ${endTimeStr}</div>
+                    `;
+
+                    if (shouldIncludeEmptyInCurrentSection) {
+                        // Add the consolidated empty slot INSIDE the current section's content wrapper
+                        const contentWrapper = currentSection.querySelector('.section-content');
+                        if (contentWrapper) {
+                            contentWrapper.appendChild(consolidatedSlot);
+                        } else {
+                            // Fallback or error handling if content wrapper isn't found
+                            console.error("Could not find content wrapper for consolidated empty slot in section", currentSection);
+                            // As a fallback, add it outside the section to avoid losing it
+                            if (currentSection && currentSection.querySelector('.student-slot, .break-slot')) {
+                                finalElements.push(currentSection); // Add section first
+                            }
+                            finalElements.push(consolidatedSlot); // Add empty slot after
+                            currentSection = null; // Section state is now uncertain/reset
+                            currentSectionInstructorId = null;
+                        }
+                        // DO NOT close the current section since we added the empty slot inside
+                    } else {
+                        // Default behavior: Close the current section (if any and has content)
+                        // and add the empty slot separately to finalElements
+                        if (currentSection) {
+                             if (currentSection.querySelector('.student-slot, .break-slot')) { // Only add section if it had actual content
+                                finalElements.push(currentSection);
+                            }
+                        }
+                        finalElements.push(consolidatedSlot);
+                        currentSection = null; // Reset section tracking as it's closed or wasn't applicable
+                        currentSectionInstructorId = null;
+                    }
+                    consecutiveEmptySlots = []; // Reset empty slots accumulator
+                }
+                // --- End of processing accumulated empty slots ---
+
+                // Now process the actual event (eventData) which triggered the empty slot processing
+                const isExternal = !!eventData.from_section;
+                const originalInstructorId = isExternal ? eventData.from_section : eventData.instructorId;
+                const slotElement = createSlotElement(eventData, timeStr, isExternal, originalInstructorId);
+
+                if (eventData.type === 'break') {
+                    // Logic to determine if break belongs inside current section or acts as separator
+                    const nextStudentInfo = findNextMeaningfulEventInfo(currentTime, dayData, eventsMap, slotDuration, dayEndTime);
+                    let includeBreakInSection = false;
+                    // Include break if section exists AND next student slot belongs to the same section instructor
+                    if (currentSection && nextStudentInfo && nextStudentInfo.eventData.type === 'student' && currentSectionInstructorId === nextStudentInfo.instructorIdForSection) {
+                         includeBreakInSection = true;
+                    }
+
+                    if (includeBreakInSection) {
+                        // Add break to the current section's content wrapper
+                        const contentWrapper = currentSection.querySelector('.section-content');
+                        if (contentWrapper) {
+                           contentWrapper.appendChild(slotElement);
+                        } else {
+                           console.error('Could not find content wrapper for break in section', currentSection);
+                           // Fallback: treat break as separator if wrapper not found
+                           if (currentSection && currentSection.querySelector('.student-slot, .break-slot')) { finalElements.push(currentSection); }
+                           finalElements.push(slotElement);
+                           currentSection = null; currentSectionInstructorId = null;
+                        }
+                        // Do NOT close the current section
+                    } else {
+                        // Break acts as a separator
+                        if (currentSection) {
+                             // Check if the section actually has student/break slots before adding
+                            if (currentSection.querySelector('.student-slot, .break-slot')) {
+                                finalElements.push(currentSection); // Close previous section
+                            }
+                        }
+                        // Add break as a standalone element
+                        finalElements.push(slotElement);
+                        currentSection = null; // Reset section tracking
+                        currentSectionInstructorId = null;
+                    }
+                } else if (eventData.type === 'student') {
+                    // Section grouping is ALWAYS based on the HOSTING instructor
+                    const hostingInstructorId = eventData.instructorId;
+                    const instructorInfo = instructorMap[hostingInstructorId]; // Info for section based on HOSTING instructor
+                    const sectionInstructorId = hostingInstructorId; // Use hosting ID for grouping
+                    const department = instructorInfo ? instructorInfo.department : 'N/A'; // Department of HOSTING instructor
+
+                    // Check if the current student slot belongs to the currently open section
+                    if (currentSection && currentSectionInstructorId === sectionInstructorId) {
+                        // Add slot to existing section's content wrapper
+                        const contentWrapper = currentSection.querySelector('.section-content');
+                        if (contentWrapper) {
+                            contentWrapper.appendChild(slotElement); // Add the potentially styled external slot
+                        } else {
+                            console.error('Could not find content wrapper for student in section', currentSection);
+                            // Fallback: Start a new section if content wrapper is missing
+                            if (currentSection.querySelector('.student-slot, .break-slot')) { finalElements.push(currentSection); } // Push previous section first
+                            currentSection = null; // Force creation of new section below
+                        }
+                    }
+
+                    // If no current section or instructor ID doesn't match, start a new one
+                    // This 'if' condition will be true if currentSection is null or IDs mismatch
+                    if (!currentSection || currentSectionInstructorId !== sectionInstructorId) {
+                        // If we are starting a new section AND there was a previous section, add it first
+                        // (This check is redundant if the section was already closed by break/empty slot logic, but safe)
+                        if (currentSection && currentSection.querySelector('.student-slot, .break-slot')) {
+                           finalElements.push(currentSection);
+                        }
+
+                        // Create the new section element
+                        currentSection = document.createElement('div');
+                        currentSection.classList.add('schedule-section', 'expanded');
+                        currentSectionInstructorId = sectionInstructorId; // Set section ID to HOSTING instructor
+
+                        const instructorName = instructorInfo ? instructorInfo.name : 'Unknown'; // HOSTING instructor name
+
+                        // Create and add the department tab (based on HOSTING instructor)
+                        const departmentTab = document.createElement('div');
+                        departmentTab.classList.add('section-department-tab');
+                        departmentTab.textContent = `${department} / ${instructorName}`;
+                        currentSection.appendChild(departmentTab);
+
+                        // Create the content wrapper
+                        const contentWrapper = document.createElement('div');
+                        contentWrapper.classList.add('section-content');
+
+                        // Apply background color to the section block (based on HOSTING instructor)
+                        if (instructorInfo && instructorInfo.color) {
+                            currentSection.style.backgroundColor = instructorInfo.color;
+                        } else {
+                            currentSection.style.backgroundColor = 'var(--white)';
+                        }
+
+                        // Add click listener to the tab
+                        departmentTab.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const sectionEl = departmentTab.parentElement;
+                            sectionEl.classList.toggle('expanded');
+                        });
+
+                        contentWrapper.appendChild(slotElement); // Add the first slot
+                        currentSection.appendChild(contentWrapper);
+                        // Note: The new section is NOT added to finalElements yet, only when it's closed or at the end.
+                    }
+                }
+                // Ignore other event types for section logic? Add handling if needed.
+
+            } else {
+                // This is an empty slot, accumulate it
+                consecutiveEmptySlots.push({ time: timeStr });
+                // Don't close the section here, wait until a non-empty slot or the end
+            }
+        } // End of the main time loop
+
+        // After the loop, process any remaining accumulated items
+        // Process remaining empty slots first
+        if (consecutiveEmptySlots.length > 0) {
+            // Empty slots at the very end cannot be part of the previous section based on 'surrounding' logic.
+            // Close the last section (if it exists and has content) before adding the final empty block.
+            if (currentSection) {
+                 if (currentSection.querySelector('.student-slot, .break-slot')) {
+                    finalElements.push(currentSection);
+                }
+                currentSection = null; // Reset section variables
+                currentSectionInstructorId = null;
+            }
+            // Add the final consolidated empty slot block
+            const startTimeStr = consecutiveEmptySlots[0].time;
+            const endTimeStr = formatTime(parseTime(consecutiveEmptySlots[consecutiveEmptySlots.length - 1].time) + slotDuration);
+            const consolidatedSlot = document.createElement('div');
+            consolidatedSlot.classList.add('time-slot', 'consolidated-empty-slot');
+            consolidatedSlot.innerHTML = `
+              <div class="time"></div>
+              <div class="slot-content">${startTimeStr} - ${endTimeStr}</div>
+            `;
+            finalElements.push(consolidatedSlot);
+        } else if (currentSection) {
+            // If the loop ended and the last item was part of a section (and no trailing empty slots),
+            // add the final section. Check if it has meaningful content first.
+            if (currentSection.querySelector('.student-slot, .break-slot')) {
+                finalElements.push(currentSection);
+            }
+        }
+
+        // Append all final elements (sections, standalone breaks, consolidated empty slots) to the container
+        slotsContainer.innerHTML = ''; // Clear previous content
+        finalElements.forEach(el => slotsContainer.appendChild(el));
+      }
+
+      function createSlotElement(slotData, timeStr, isExternal, originalInstructorId) { // Added isExternal and originalInstructorId
+        const slotDiv = document.createElement('div');
+        slotDiv.classList.add('time-slot');
+
+        let contentHTML = '';
+        let slotContentStyle = ''; // To hold inline style for background
+        let additionalInfoHTML = ''; // To hold the 'from' text
+        let slotNumberStyle = ''; // To hold inline style for slot number background
+
+        if (slotData.type === 'student') {
+            slotDiv.classList.add('student-slot');
+
+            const hostingInstructorId = slotData.instructorId; // Get hosting instructor ID
+            const hostingInstructorInfo = instructorMap[hostingInstructorId];
+            const hostingColor = (hostingInstructorInfo && hostingInstructorInfo.color) ? hostingInstructorInfo.color : '#A0C4FF'; // Fallback color
+
+            // Set slot number background (lighter than hosting color)
+            const lighterHostingColor = lightenColor(hostingColor, 40); // Adjust lightness amount (e.g., 40)
+            slotNumberStyle = `background-color: ${lighterHostingColor};`;
+            // Determine text color for slot number based on lightness
+            const colorLuminance = (hex) => {
+                const rgb = parseInt(hex.slice(1), 16);
+                const r = (rgb >> 16) & 0xff;
+                const g = (rgb >> 8) & 0xff;
+                const b = (rgb >> 0) & 0xff;
+                // Perceived luminance (YIQ) formula
+                return (r * 299 + g * 587 + b * 114) / 1000;
+            };
+            const numberTextColor = colorLuminance(lighterHostingColor) > 128 ? '#000000' : '#FFFFFF'; // Black on light, White on dark
+            slotNumberStyle += ` color: ${numberTextColor};`;
+
+            const slotNumberHTML = slotData.number !== null ? `<div class="slot-number" style="${slotNumberStyle}">${slotData.number}</div>` : '';
+
+            // Base content: number and name
+            contentHTML = `
+              ${slotNumberHTML}
+              <div class="student-name">${slotData.name}</div>
+            `;
+
+            // Apply background color to slot content based on external status
+            if (isExternal && originalInstructorId && instructorMap[originalInstructorId]) {
+                // External student: Use original instructor's color (as before)
+                const originalInstructorInfo = instructorMap[originalInstructorId];
+                slotContentStyle = `background-color: ${originalInstructorInfo.color || 'var(--primary-light)'};`;
+                additionalInfoHTML = `<span class="external-info" style="margin-left: auto; font-style: italic; font-size: 0.8em; color: var(--text-light); padding-left: 0.5rem;">from ${originalInstructorInfo.name}'s section</span>`;
+            } else {
+                // Regular student: Use lighter version of HOSTING instructor's color
+                // const lighterSlotColor = lightenColor(hostingColor, 20); // Adjust lightness amount (e.g., 20)
+                // slotContentStyle = `background-color: ${lighterSlotColor};`;
+                // Regular student: Apply a gradient background based on HOSTING instructor's color
+                const lighterGradientColor = lightenColor(hostingColor, 30); // Lighter shade for gradient
+                slotContentStyle = `background: linear-gradient(135deg, ${lighterGradientColor}, ${hostingColor});`;
+            }
+        } else if (slotData.type === 'break') {
+            slotDiv.classList.add('break-slot');
+            contentHTML = slotData.label;
+        }
+
+        // Construct the final innerHTML, applying the style and adding the extra info if present
+        // Note: added template literals for easier style insertion
+        slotDiv.innerHTML = `
+          <div class="time">${timeStr}</div>
+          <div class="slot-content" ${slotContentStyle ? `style="${slotContentStyle}"` : ''}>
+            ${contentHTML}
+            ${additionalInfoHTML}
+          </div>
+        `;
+
+        return slotDiv;
+      }
+      
+      // --- Initialization ---
+      // Scroll-to-schedule button logic
+      const viewScheduleButton = document.getElementById('viewScheduleBtn');
+      const scheduleContainer = document.querySelector('.container');
+
+      if (viewScheduleButton && scheduleContainer) {
+        viewScheduleButton.addEventListener('click', () => {
+          scheduleContainer.scrollIntoView({ behavior: 'smooth' });
+        });
+      } else {
+        console.error('Scroll button or schedule container not found.');
+      }
+
+      // Fetch data and render
+      try {
+        const response = await fetch('schedule_data.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        renderSchedule(data);
+      } catch (error) {
+          console.error("Could not load schedule data:", error);
+          // Optionally display an error message to the user in the HTML
+          const container = document.querySelector('.container');
+          if (container) {
+              container.innerHTML = '<h1>Error loading schedule data. Please try again later.</h1>';
+          }
+      }
+
+      // Tab switching logic
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          schedules.forEach(schedule => schedule.classList.remove('visible'));
+          const day = tab.getAttribute('data-day');
+          const scheduleEl = document.getElementById(day);
+          if (scheduleEl) {
+              scheduleEl.classList.add('visible');
+          } else {
+              console.error(`Schedule element with ID ${day} not found.`);
+          }
+        });
+      });
+
+      // Ensure initial visibility is set correctly after data load
+      const activeTab = document.querySelector('.tab-button.active');
+      if (activeTab) {
+          const initialDay = activeTab.getAttribute('data-day');
+          const initialSchedule = document.getElementById(initialDay);
+          if (initialSchedule) {
+              schedules.forEach(s => s.classList.remove('visible'));
+              initialSchedule.classList.add('visible');
+          }
+      } else if (tabs.length > 0) {
+          // If no tab is active initially, activate the first one
+          tabs[0].click();
+      }
+
+      // Remove the old functions no longer needed
+      // populateSchedule, consolidateEmptySlotsForDay, applyTimeBandClasses, removeOriginalHiddenSlots, wrapSections are replaced
+    });
+  </script>
+</body>
+</html>

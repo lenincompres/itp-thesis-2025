@@ -1,0 +1,415 @@
+{
+  "instructors": [
+    {"id": "sam", "name": "Sam", "color": "#FFDAB9", "department": "IMA"},
+    {"id": "rashida", "name": "Rashida", "color": "#FFB6C1", "department": "IMA"},
+    {"id": "blair", "name": "Blair", "color": "#F08080", "department": "IMA"},
+    {"id": "allison", "name": "Allison", "color": "#FFB3B3", "department": "IMA"},
+    {"id": "luisa", "name": "Luisa", "color": "#FFFACD", "department": "ITP"},
+    {"id": "kari", "name": "Kari", "color": "#FFDCA9", "department": "ITP"},
+    {"id": "yuliya", "name": "Yuliya", "color": "#C1FFC1", "department": "ITP"},
+    {"id": "theo", "name": "Theo", "color": "#ACE1AF", "department": "ITP"},
+    {"id": "tiri", "name": "Tiri", "color": "#B0E0E6", "department": "ITP"},
+    {"id": "simone", "name": "Simone", "color": "#E6E6FA", "department": "ITP"},
+    {"id": "sharleen", "name": "Sharleen", "color": "#DDA0DD", "department": "ITP"},
+    {"id": "sarah", "name": "Sarah", "color": "#FFC0CB", "department": "ITP"}
+  ],
+  "schedule": {
+    "monday": {
+      "date": "Monday, May 5",
+      "startTime": "9:00 AM",
+      "endTime": "10:36 PM",
+      "slotDuration": 12,
+      "events": [
+        {
+          "instructorId": "sam",
+          "startTime": "3:36 PM",
+          "slots": [
+            { "type": "student", "number": 1, "name": "Kaitlyn Zou" },
+            { "type": "student", "number": 2, "name": "Lena Lin" },
+            { "type": "student", "number": 3, "name": "Kathryn Lee" },
+            { "type": "student", "number": 4, "name": "Sandy Tan" },
+            { "type": "student", "number": 5, "name": "Emily Shen" },
+            { "type": "student", "number": 6, "name": "Harrison Newman" },
+            { "type": "student", "number": 7, "name": "Ella Tang" },
+            { "type": "student", "number": 8, "name": "Alina Zeng" }
+          ]
+        },
+        {
+          "instructorId": null,
+          "startTime": "5:12 PM",
+          "slots": [ { "type": "break", "label": "BREAK" } ]
+        },
+        {
+          "instructorId": "sam",
+          "startTime": "5:24 PM",
+          "slots": [
+            { "type": "student", "number": 9, "name": "Emily Luo" },
+            { "type": "student", "number": 10, "name": "Yaashna Gupta" },
+            { "type": "student", "number": 11, "name": "Annelise Lee" },
+            { "type": "student", "number": 12, "name": "Ruiqu Zhan" },
+            { "type": "student", "number": 13, "name": "Clarissa Pace" },
+            { "type": "student", "number": 14, "name": "Jessica Lin" },
+            { "type": "student", "number": 15, "name": "Dana Kang" },
+            { "type": "student", "number": 16, "name": "Anna Ren" }
+          ]
+        },
+        {
+          "instructorId": null,
+          "startTime": "7:00 PM",
+          "slots": [ { "type": "break", "label": "BREAK" } ]
+        },
+        {
+          "instructorId": "allison",
+          "startTime": "7:12 PM",
+          "slots": [
+            { "type": "student", "number": 1, "name": "Bingwen Chen" },
+            { "type": "student", "number": 2, "name": "Q Gao" },
+            { "type": "student", "number": 3, "name": "Ali Geraci" },
+            { "type": "student", "number": 4, "name": "Hazel He" },
+            { "type": "student", "number": 5, "name": "Emily Hu" },
+            { "type": "student", "number": 6, "name": "Jacenia Li" },
+            { "type": "student", "number": 7, "name": "Jaden Mansfield" }
+          ]
+        },
+        {
+            "instructorId": null,
+            "startTime": "8:36 PM",
+            "slots": [ { "type": "break", "label": "BREAK" } ]
+        },
+        {
+           "instructorId": "allison",
+           "startTime": "8:48 PM",
+           "slots": [
+              { "type": "student", "number": 8, "name": "Pearl Marden" },
+              { "type": "student", "number": 9, "name": "Myagmarsuren Olonbayar" },
+              { "type": "student", "number": 10, "name": "Avital Rabinovitch" },
+              { "type": "student", "number": 11, "name": "Joshua Thwaites" },
+              { "type": "student", "number": 12, "name": "John Wang" },
+              { "type": "student", "number": 13, "name": "Hannah Zhao" },
+              { "type": "student", "number": 14, "name": "Yuntian Zhao" },
+              { "type": "student", "number": 15, "name": "Annie Zhu" }
+           ]
+        }
+      ]
+    },
+    "tuesday": {
+      "date": "Tuesday, May 6",
+      "startTime": "9:00 AM",
+      "endTime": "10:36 PM",
+      "slotDuration": 12,
+      "events": [
+        {
+          "instructorId": "blair",
+          "startTime": "12:24 PM",
+          "slots": [
+            { "type": "student", "number": 1, "name": "Sarah Xu" },
+            { "type": "student", "number": 2, "name": "Demi Zhou" },
+            { "type": "student", "number": 3, "name": "Elton Orbito" },
+            { "type": "student", "number": 4, "name": "Christina Wu" },
+            { "type": "student", "number": 5, "name": "Jingyi (Errico) Sun" },
+            { "type": "student", "number": 6, "name": "Yiwa (Eva) He" },
+            { "type": "student", "number": 7, "name": "Ziyuan (Peter) Lin" },
+            { "type": "student", "number": 8, "name": "Jiayi Tan" }
+          ]
+        },
+        {
+          "instructorId": null,
+          "startTime": "2:00 PM",
+          "slots": [ { "type": "break", "label": "BREAK" } ]
+        },
+        {
+          "instructorId": "blair",
+          "startTime": "2:12 PM",
+          "slots": [
+            { "type": "student", "number": 9, "name": "Huiyin (Queenie) Weng" },
+            { "type": "student", "number": 10, "name": "Kennon Cummings" },
+            { "type": "student", "number": 11, "name": "Karen Xu" },
+            { "type": "student", "number": 12, "name": "Tamara Bueno" },
+            { "type": "student", "number": 13, "name": "Maxine Deluca" },
+            { "type": "student", "number": 14, "name": "Ava Auffret-Reid" },
+            { "type": "student", "number": 15, "name": "Kexin (Linda) Chen" },
+            { "type": "student", "number": 16, "name": "Weijia Lina (Lina) Sun" }
+          ]
+        },
+        {
+          "instructorId": "rashida",
+          "startTime": "5:24 PM",
+          "slots": [
+            { "type": "student", "number": 1, "name": "Lachlan Campbell" },
+            { "type": "student", "number": 2, "name": "Alejandro Cardena" },
+            { "type": "student", "number": 3, "name": "Isabella Celleri-Bonilla" },
+            { "type": "student", "number": 4, "name": "In Kun Chun" },
+            { "type": "student", "number": 5, "name": "Jenna Han" },
+            { "type": "student", "number": 6, "name": "Carolina Herrera" },
+            { "type": "student", "number": 7, "name": "Noah Lee" },
+            { "type": "student", "number": 8, "name": "Matthew Li" }
+          ]
+        },
+        {
+          "instructorId": null,
+          "startTime": "7:00 PM",
+          "slots": [ { "type": "break", "label": "BREAK" } ]
+        },
+        {
+          "instructorId": "rashida",
+          "startTime": "7:12 PM",
+          "slots": [
+              { "type": "student", "number": 9, "name": "Athena Luo" },
+              { "type": "student", "number": 10, "name": "Tom McCluskey" },
+              { "type": "student", "number": 11, "name": "Sasha Slavashevich" },
+              { "type": "student", "number": 12, "name": "Watson Tao" },
+              { "type": "student", "number": 13, "name": "Sirui Wang" },
+              { "type": "student", "number": 14, "name": "Alan Xiao" },
+              { "type": "student", "number": 15, "name": "Qianhan Xu" }
+          ]
+        }
+      ]
+    },
+    "wednesday": {
+      "date": "Wednesday, May 7",
+      "startTime": "9:00 AM",
+      "endTime": "10:36 PM",
+      "slotDuration": 12,
+      "events": [
+        {
+          "instructorId": "kari",
+          "startTime": "9:12 AM",
+          "slots": [
+            { "type": "student", "number": 1, "name": "Student" },
+            { "type": "student", "number": 2, "name": "Student" },
+            { "type": "student", "number": 3, "name": "Student" },
+            { "type": "student", "number": 4, "name": "Student" },
+            { "type": "student", "number": 5, "name": "Student" },
+            { "type": "student", "number": 6, "name": "Student" }
+          ]
+        },
+        { "instructorId": null, "startTime": "10:24 AM", "slots": [ { "type": "break", "label": "BREAK" } ] },
+        {
+          "instructorId": "kari",
+          "startTime": "10:36 AM",
+          "slots": [
+            { "type": "student", "number": 7, "name": "Student" },
+            { "type": "student", "number": 8, "name": "Student" },
+            { "type": "student", "number": 9, "name": "Student" },
+            { "type": "student", "number": 10, "name": "Student" },
+            { "type": "student", "number": 11, "name": "Student" },
+            { "type": "student", "number": 12, "name": "Student" },
+            { "type": "student", "number": 13, "name": "Student" }
+          ]
+        },
+        { "instructorId": null, "startTime": "12:00 PM", "slots": [ { "type": "break", "label": "LUNCH" } ] },
+        {
+          "instructorId": "theo",
+          "startTime": "12:36 PM",
+          "slots": [
+            { "type": "student", "number": 1, "name": "Baiyuan" },
+            { "type": "student", "number": 2, "name": "Kefan" },
+            { "type": "student", "number": 3, "name": "Arya" },
+            { "type": "student", "number": 4, "name": "Lingyi" },
+            { "type": "student", "number": 5, "name": "Ellen" },
+            { "type": "student", "number": 6, "name": "Max" },
+            { "type": "student", "number": 7, "name": "Lusine" }
+          ]
+        },
+        { "instructorId": null, "startTime": "2:00 PM", "slots": [ { "type": "break", "label": "BREAK" } ] },
+        {
+          "instructorId": "theo",
+          "startTime": "2:12 PM",
+          "slots": [
+            { "type": "student", "number": 8, "name": "Fiona" },
+            { "type": "student", "number": 9, "name": "Mia" },
+            { "type": "student", "number": 10, "name": "Yidan" },
+            { "type": "student", "number": 11, "name": "Lejing" },
+            { "type": "student", "number": 12, "name": "Siqi" },
+            { "type": "student", "number": 13, "name": "Una" }
+           ]
+        },
+        { "instructorId": null, "startTime": "3:24 PM", "slots": [ { "type": "break", "label": "BREAK" } ] },
+        {
+          "instructorId": "tiri",
+          "startTime": "3:36 PM",
+          "slots": [
+            { "type": "student", "number": 1, "name": "Lucia Gomez" },
+            { "type": "student", "number": 2, "name": "Fay Cai" },
+            { "type": "student", "number": 3, "name": "Bowen Zheng" },
+            { "type": "student", "number": 4, "name": "Weichen (Eric) Shen" },
+            { "type": "student", "number": 5, "name": "Yiyang Guo" },
+            { "type": "student", "number": 6, "name": "Jiaqi Yi" },
+            { "type": "student", "number": 7, "name": "Cathy Li" }
+          ]
+        },
+        { "instructorId": null, "startTime": "5:00 PM", "slots": [ { "type": "break", "label": "BREAK" } ] },
+        {
+          "instructorId": "tiri",
+          "startTime": "5:12 PM",
+          "slots": [
+            { "type": "student", "number": 8, "name": "Jiachen (Johnny) Zhou" },
+            { "type": "student", "number": 9, "name": "Andre Lira" },
+            { "type": "student", "number": 10, "name": "Samantha Cui" },
+            { "type": "student", "number": 11, "name": "Christina Tang" },
+            { "type": "student", "number": 13, "name": "Alan Ren", "from_section": "kari" },
+            { "type": "student", "number": 14, "name": "Ruby", "from_section": "luisa" },
+            { "type": "student", "number": null, "name": null },
+            { "type": "student", "number": 15, "name": "Liyan Ibrahim" },
+            { "type": "student", "number": null, "name": null },
+            { "type": "student", "number": null, "name": "Vinh Nguyen"}
+          ]
+        }
+      ]
+    },
+    "thursday": {
+      "date": "Thursday, May 8",
+      "startTime": "9:00 AM",
+      "endTime": "10:36 PM",
+      "slotDuration": 12,
+      "events": [
+         {
+          "instructorId": "yuliya",
+          "startTime": "9:00 AM",
+          "slots": [
+            { "type": "student", "number": 1, "name": "Student" },
+            { "type": "student", "number": 2, "name": "Student" },
+            { "type": "student", "number": 3, "name": "Student" },
+            { "type": "student", "number": 4, "name": "Student" },
+            { "type": "student", "number": 5, "name": "Student" },
+            { "type": "student", "number": 6, "name": "Student" },
+            { "type": "student", "number": 7, "name": "Student" }
+          ]
+        },
+        { "instructorId": null, "startTime": "10:24 AM", "slots": [ { "type": "break", "label": "BREAK" } ] },
+        {
+          "instructorId": "yuliya",
+          "startTime": "10:36 AM",
+          "slots": [
+            { "type": "student", "number": 8, "name": "Student" },
+            { "type": "student", "number": 9, "name": "Student" },
+            { "type": "student", "number": 10, "name": "Student" },
+            { "type": "student", "number": 11, "name": "Student" },
+            { "type": "student", "number": 12, "name": "Student" },
+            { "type": "student", "number": 13, "name": "Student" },
+            { "type": "student", "number": 14, "name": "Student" }
+          ]
+        },
+        { "instructorId": null, "startTime": "12:00 PM", "slots": [ { "type": "break", "label": "LUNCH" } ] },
+         {
+          "instructorId": "sharleen",
+          "startTime": "12:36 PM",
+          "slots": [
+            { "type": "student", "number": 1, "name": "Isabel" },
+            { "type": "student", "number": 2, "name": "Penny" },
+            { "type": "student", "number": 3, "name": "Fatima" },
+            { "type": "student", "number": 4, "name": "Jenny" },
+            { "type": "student", "number": 5, "name": "An" },
+            { "type": "student", "number": 6, "name": "Michal" },
+            { "type": "student", "number": 7, "name": "Zi" }
+          ]
+        },
+        { "instructorId": null, "startTime": "2:00 PM", "slots": [ { "type": "break", "label": "BREAK" } ] },
+        {
+          "instructorId": "sharleen",
+          "startTime": "2:12 PM",
+          "slots": [
+            { "type": "student", "number": 8, "name": "Nathan" },
+            { "type": "student", "number": 9, "name": "Sean" },
+            { "type": "student", "number": 10, "name": "Meiyi" },
+            { "type": "student", "number": 11, "name": "Zoey" },
+            { "type": "student", "number": 12, "name": "Shohnigor" },
+            { "type": "student", "number": 13, "name": "Lois" },
+            { "type": "student", "number": 14, "name": "Melika" }
+          ]
+        },
+        { "instructorId": null, "startTime": "3:36 PM", "slots": [ { "type": "break", "label": "BREAK" } ] },
+        {
+          "instructorId": "simone",
+          "startTime": "3:48 PM",
+          "slots": [
+             { "type": "student", "number": 1, "name": "Justine Chung" },
+             { "type": "student", "number": 2, "name": "Yihua (Corey) Li" },
+             { "type": "student", "number": 3, "name": "Andres Franco" },
+             { "type": "student", "number": 4, "name": "Chienn Tai" },
+             { "type": "student", "number": 5, "name": "Matthew Lau" },
+             { "type": "student", "number": 6, "name": "Sackona Fitts" }
+          ]
+        },
+        { "instructorId": null, "startTime": "5:00 PM", "slots": [ { "type": "break", "label": "BREAK" } ] },
+        {
+          "instructorId": "simone",
+          "startTime": "5:12 PM",
+          "slots": [
+             { "type": "student", "number": 7, "name": "Hanyong (Kyrie) Yang" },
+             { "type": "student", "number": 8, "name": "Wallis Millar-Blanchaer" },
+             { "type": "student", "number": 9, "name": "Myrah Sarwar" },
+             { "type": "student", "number": 10, "name": "Jenny Lee" },
+             { "type": "student", "number": 11, "name": "Zhiyang Wang" },
+             { "type": "student", "number": 12, "name": "Jackie Chen" },
+             { "type": "student", "number": 13, "name": "Shun Huang" },
+             { "type": "student", "number": 14, "name": "Josh Sun" }
+          ]
+        }
+      ]
+    },
+    "friday": {
+      "date": "Friday, May 9",
+      "startTime": "9:00 AM",
+      "endTime": "10:36 PM",
+      "slotDuration": 12,
+      "events": [
+        {
+          "instructorId": "sarah",
+          "startTime": "9:12 AM",
+          "slots": [
+             { "type": "student", "number": 1, "name": "Student" },
+             { "type": "student", "number": 2, "name": "Student" },
+             { "type": "student", "number": 3, "name": "Student" },
+             { "type": "student", "number": 4, "name": "Student" },
+             { "type": "student", "number": 5, "name": "Student" },
+             { "type": "student", "number": 6, "name": "Student" },
+             { "type": "student", "number": 7, "name": "Student" }
+          ]
+        },
+        { "instructorId": null, "startTime": "10:36 AM", "slots": [ { "type": "break", "label": "BREAK" } ] },
+        {
+          "instructorId": "sarah",
+          "startTime": "10:48 AM",
+          "slots": [
+             { "type": "student", "number": 8, "name": "Student" },
+             { "type": "student", "number": 9, "name": "Student" },
+             { "type": "student", "number": 10, "name": "Student" },
+             { "type": "student", "number": 11, "name": "Student" },
+             { "type": "student", "number": 12, "name": "Student" },
+             { "type": "student", "number": 13, "name": "Student" }
+          ]
+        },
+        { "instructorId": null, "startTime": "12:00 PM", "slots": [ { "type": "break", "label": "LUNCH" } ] },
+        {
+          "instructorId": "luisa",
+          "startTime": "12:36 PM",
+          "slots": [
+             { "type": "student", "number": null, "name": "Sahal" },
+             { "type": "student", "number": null, "name": "Diana" },
+             { "type": "student", "number": null, "name": "Shimeng" },
+             { "type": "student", "number": null, "name": "Ruby" },
+             { "type": "student", "number": null, "name": "Jiayi Li" },
+             { "type": "student", "number": null, "name": "Pien" },
+             { "type": "student", "number": null, "name": "Zongze" }
+          ]
+        },
+        { "instructorId": null, "startTime": "2:00 PM", "slots": [ { "type": "break", "label": "BREAK" } ] },
+        {
+          "instructorId": "luisa",
+          "startTime": "2:12 PM",
+          "slots": [
+             { "type": "student", "number": null, "name": "Jiayi Wu" },
+             { "type": "student", "number": null, "name": "Damon" },
+             { "type": "student", "number": null, "name": "Seun" },
+             { "type": "student", "number": null, "name": "Parth" },
+             { "type": "student", "number": null, "name": "Junqi" },
+             { "type": "student", "number": null, "name": "Manan" },
+             { "type": "student", "number": null, "name": "Muqing" },
+             { "type": "student", "number": null, "name": "Lening" }
+          ]
+        }
+      ]
+    }
+  }
+} 
