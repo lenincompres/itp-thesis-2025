@@ -325,7 +325,7 @@
           "startTime": "3:48 PM",
           "slots": [
              { "type": "student", "number": 1, "name": "Justine Chung" },
-             { "type": "student", "number": 2, "name": "Yihua (Corey) Li" },
+             { "type": "student", "number": 2, "name": "Yihua (Cory) Li" },
              { "type": "student", "number": 3, "name": "Andres Franco" },
              { "type": "student", "number": 4, "name": "Chienn Tai" },
              { "type": "student", "number": 5, "name": "Matthew Lau" },
