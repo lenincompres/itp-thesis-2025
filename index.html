@@ -609,7 +609,7 @@
     @media (max-width: 1229px) {
       body {
         padding-top: 0; /* Remove space reserved for fixed banner */
-        overflow: hidden; /* Prevent body scrollbars when columns handle scrolling */
+        overflow: visible; /* Changed from hidden to visible to allow scrolling */
       }
 
       /* Hide banner image in container on mobile */
@@ -620,6 +620,7 @@
       .layout-wrapper {
         display: flex;
         height: 100vh; /* Make wrapper fill viewport height */
+        overflow: visible; /* Changed from hidden to visible */
       }
 
       .left-column {
@@ -627,7 +628,7 @@
         flex-shrink: 0;
         padding: 1rem;
         height: 100vh; /* Fill viewport height */
-        overflow-y: auto; /* Allow left column to scroll if needed */
+        overflow-y: auto; /* Changed from hidden to auto to allow scrolling */
         position: sticky; /* Keep left column visible */
         top: 0;
         background-color: #f9f8f2; /* Updated background color */
@@ -635,16 +636,12 @@
         position: relative; /* For animation container positioning */
       }
 
-      /* Hide banner in left column */
-      .left-column .site-banner {
-        display: none;
-      }
-
       .right-column {
         flex-grow: 1; /* Take remaining width */
         height: 100vh; /* Fill viewport height */
         overflow-y: auto; /* Allow right column (schedule) to scroll */
         padding: 1.5rem 2rem; /* Add padding for content */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
       }
 
       .site-nav {
