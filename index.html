@@ -1492,7 +1492,7 @@
             banner.classList.remove('blurred'); // Remove blur when banner is in sidebar
           }
         } else {
-            // console.log("Banner or placeholder not found for moving.");
+            console.log("Banner or placeholder not found for moving.");
         }
       }
 
@@ -1506,15 +1506,16 @@
              if (banner.parentElement !== body) {
                 body.insertBefore(banner, body.firstChild); // Move banner back to the top of body
                 // Restore original styles (or rely on CSS rules)
-                banner.style.position = ''; // Let CSS handle it
-                banner.style.height = '';
-                banner.style.width = '';
+                banner.style.position = 'fixed';
+                banner.style.height = '100vh';
+                banner.style.width = '100vw';
                 banner.style.marginTop = '';
+                banner.style.opacity = '1'; // Ensure banner is visible
                 const scrollBtn = banner.querySelector('.scroll-down-button');
                 if (scrollBtn) scrollBtn.style.display = ''; // Restore scroll button
              }
           } else {
-            // console.log("Banner or body not found for restoring.");
+            console.log("Banner or body not found for restoring.");
           }
       }
 
