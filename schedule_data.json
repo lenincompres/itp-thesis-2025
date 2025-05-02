@@ -173,14 +173,15 @@
       "events": [
         {
           "instructorId": "kari",
-          "startTime": "9:12 AM",
+          "startTime": "9:00 AM",
           "slots": [
-            { "type": "student", "number": 1, "name": "Student" },
-            { "type": "student", "number": 2, "name": "Student" },
-            { "type": "student", "number": 3, "name": "Student" },
-            { "type": "student", "number": 4, "name": "Student" },
-            { "type": "student", "number": 5, "name": "Student" },
-            { "type": "student", "number": 6, "name": "Student" }
+            { "type": "student", "number": 1, "name": "Henrique Stockler" },
+            { "type": "student", "number": 2, "name": "Ruiyan Sun" },
+            { "type": "student", "number": 3, "name": "Audrey Chou" },
+            { "type": "student", "number": 4, "name": "Sonny Yan" },
+            { "type": "student", "number": 5, "name": "Mingxuan (Ming) Li" },
+            { "type": "student", "number": 6, "name": "Aradhita Maheshwari"},
+            {"type": "student", "number": 7, "name":"Elaine Wang"}
           ]
         },
         { "instructorId": null, "startTime": "10:24 AM", "slots": [ { "type": "break", "label": "BREAK" } ] },
@@ -188,13 +189,13 @@
           "instructorId": "kari",
           "startTime": "10:36 AM",
           "slots": [
-            { "type": "student", "number": 7, "name": "Student" },
-            { "type": "student", "number": 8, "name": "Student" },
-            { "type": "student", "number": 9, "name": "Student" },
-            { "type": "student", "number": 10, "name": "Student" },
-            { "type": "student", "number": 11, "name": "Student" },
-            { "type": "student", "number": 12, "name": "Student" },
-            { "type": "student", "number": 13, "name": "Student" }
+            { "type": "student", "number": 8, "name": "Georgia Chen" },
+            { "type": "student", "number": 9, "name": "Caakyire Kyei" },
+            { "type": "student", "number": 10, "name": "Octavio Figueroa Moya" },
+            { "type": "student", "number": 11, "name": "Jinlan Huang" },
+            { "type": "student", "number": 12, "name": "Xinyu Zhang" },
+            { "type": "student", "number": 13, "name": "Vio Zhu" },
+            {"type": "student", "number": 14, "name": null}
           ]
         },
         { "instructorId": null, "startTime": "12:00 PM", "slots": [ { "type": "break", "label": "LUNCH" } ] },
@@ -267,13 +268,13 @@
           "instructorId": "yuliya",
           "startTime": "9:00 AM",
           "slots": [
-            { "type": "student", "number": 1, "name": "Student" },
-            { "type": "student", "number": 2, "name": "Student" },
-            { "type": "student", "number": 3, "name": "Student" },
-            { "type": "student", "number": 4, "name": "Student" },
-            { "type": "student", "number": 5, "name": "Student" },
-            { "type": "student", "number": 6, "name": "Student" },
-            { "type": "student", "number": 7, "name": "Student" }
+            { "type": "student", "number": 1, "name": "Andrew" },
+            { "type": "student", "number": 2, "name": "Cara" },
+            { "type": "student", "number": 3, "name": "Qian" },
+            { "type": "student", "number": 4, "name": "Iris" },
+            { "type": "student", "number": 5, "name": "Cassidy" },
+            { "type": "student", "number": 6, "name": "Linna" },
+            { "type": "student", "number": 7, "name": "Tamanna" }
           ]
         },
         { "instructorId": null, "startTime": "10:24 AM", "slots": [ { "type": "break", "label": "BREAK" } ] },
@@ -281,13 +282,13 @@
           "instructorId": "yuliya",
           "startTime": "10:36 AM",
           "slots": [
-            { "type": "student", "number": 8, "name": "Student" },
-            { "type": "student", "number": 9, "name": "Student" },
-            { "type": "student", "number": 10, "name": "Student" },
-            { "type": "student", "number": 11, "name": "Student" },
-            { "type": "student", "number": 12, "name": "Student" },
-            { "type": "student", "number": 13, "name": "Student" },
-            { "type": "student", "number": 14, "name": "Student" }
+            { "type": "student", "number": 8, "name": "Sofia" },
+            { "type": "student", "number": 9, "name": "Zhaorong" },
+            { "type": "student", "number": 10, "name": "Jane" },
+            { "type": "student", "number": 11, "name": "Cindy" },
+            { "type": "student", "number": 12, "name": "Proud" },
+            { "type": "student", "number": 13, "name": "Jack B." },
+            { "type": "student", "number": 14, "name": "Sao" }
           ]
         },
         { "instructorId": null, "startTime": "12:00 PM", "slots": [ { "type": "break", "label": "LUNCH" } ] },

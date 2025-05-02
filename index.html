@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Capstone / Thesis Week Schedule</title>
+  <title>2025 - ITP Thesis / IMA Capstone Week</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -47,6 +47,9 @@
       background-color: var(--bg-body);
       line-height: 1.5;
       padding: 0; /* Remove body padding, handle spacing with banner/container */
+      /* Add padding-top to push content below the initially rendered banner */
+      /* This value might need adjustment depending on the banner image aspect ratio */
+      /* padding-top: 60vh; REMOVED */
     }
     
     .site-banner {
@@ -58,16 +61,25 @@
       top: 0;
       left: 0;
       width: 100vw;
-      height: 100vh;
+      /* height: 100vh; REMOVED */
+      height: 100vh; /* RESTORED */
       z-index: 1;
-      background-color: #000; /* Fallback color if image fails */
+      /* background-color: #000; CHANGED Fallback color if image fails */
+      background-color: #f9f8f2; /* Set desired background */
+      transition: filter 0.3s ease; /* Add transition for smooth blur effect */
+    }
+
+    .site-banner.blurred {
+      filter: blur(8px); /* Apply blur effect when class is added */
     }
 
     .site-banner img {
       display: block; /* Ensure image takes full width and removes bottom space */
       width: 100%; /* Already set inline, but good to have here */
-      height: 100%; /* Make image fill the banner height */
-      object-fit: cover; /* Cover the area, cropping if needed */
+      /* height: 100%; REMOVED */
+      height: 100%; /* RESTORED */
+      /* object-fit: cover; CHANGED Cover the area, cropping if needed */
+      object-fit: contain; /* Contain image to show full image + background */
     }
 
     /* Style for the scroll-down button on the banner */
@@ -102,6 +114,55 @@
       left: 0;
       z-index: 101;
       padding: 1rem; /* Add some spacing */
+      overflow: hidden; /* Hide overflow from animated rectangles */
+    }
+
+    /* Add animation container for rectangles */
+    .nav-animation-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      display: block;
+      overflow: visible;
+    }
+
+    /* Rectangle animation styles */
+    .nav-rectangle {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      animation: rectangleFlow 8s linear infinite;
+      opacity: 0.8;
+      transform: translateY(0);
+      overflow: visible;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      overflow:hidden;
+    }
+
+    .nav-rectangle img {
+      width: 200%;
+      height: auto;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      display: block;
+      transform: rotate(-90deg);
+    }
+
+    @keyframes rectangleFlow {
+      0% {
+        transform: translateY(0);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100%);
+        opacity: 0.8;
+      }
     }
 
     .site-nav a {
@@ -117,6 +178,33 @@
       border-radius: var(--border-radius-large); /* Use variable for consistent rounding */
       backdrop-filter: blur(3px); /* Frosted glass effect */
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .site-nav a[href="livestream.html"] {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 182, 193, 0.2),  /* Pastel Pink */
+        rgba(173, 216, 230, 0.2),  /* Pastel Blue */
+        rgba(144, 238, 144, 0.2),  /* Pastel Green */
+        rgba(255, 218, 185, 0.2),  /* Pastel Peach */
+        rgba(221, 160, 221, 0.2)   /* Pastel Purple */
+      );
+      background-size: 400% 400%;
+      animation: gradientFlow 8s ease infinite;
+    }
+
+    @keyframes gradientFlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .site-nav a:hover {
@@ -126,7 +214,9 @@
     
     .container {
       max-width: 900px; /* Reduced width */
-      margin: 100vh auto 2rem; /* Start below banner, keep horizontal auto margin */
+      /* margin: 100vh auto 2rem; CHANGED */
+      /* margin: 2rem auto 2rem; CHANGED Set top margin relative to body padding */
+      margin: 100vh auto 2rem; /* RESTORED Start below banner */
       padding: 2rem;
       background-color: var(--white);
       border-radius: var(--border-radius-large); /* Use variable */
@@ -170,8 +260,43 @@
     
     .tab-button.active {
       background-color: var(--primary);
-      color: var(--white);
+      color: var(--text); /* Changed from var(--white) to var(--text) for higher contrast */
       border-color: var(--primary);
+      font-weight: 700; /* Make active text bolder for even better contrast */
+    }
+
+    /* Add specific colors for each day */
+    .tab-button[data-day="monday"] {
+      --day-color: #FFB5E8; /* Pastel Pink */
+    }
+    
+    .tab-button[data-day="tuesday"] {
+      --day-color: #B5DEFF; /* Pastel Blue */
+    }
+    
+    .tab-button[data-day="wednesday"] {
+      --day-color: #BFFCC6; /* Pastel Green */
+    }
+    
+    .tab-button[data-day="thursday"] {
+      --day-color: #FFC9DE; /* Pastel Rose */
+    }
+    
+    .tab-button[data-day="friday"] {
+      --day-color: #D5AAFF; /* Pastel Purple */
+    }
+
+    .tab-button:hover {
+      background-color: var(--day-color);
+      border-color: var(--day-color);
+      color: var(--text);
+    }
+    
+    .tab-button.active {
+      background-color: var(--day-color);
+      color: var(--text); /* Changed from var(--white) to var(--text) for higher contrast */
+      border-color: var(--day-color);
+      font-weight: 700; /* Make active text bolder for even better contrast */
     }
     
     .schedule {
@@ -222,14 +347,18 @@
     
     .time {
       width: 70px; /* Slightly narrower time */
-      font-size: 0.8rem;
-      color: var(--text-light);
-      font-weight: 500;
+      font-size: 0.9rem; /* Increased from 0.8rem */
+      color: var(--text); /* Changed from --text-light to --text for better contrast */
+      font-weight: 600; /* Increased from 500 */
       display: flex;
       align-items: center;
       flex-shrink: 0;
       justify-content: flex-end; /* Right align time */
       padding-right: 0.75rem; /* Space between time and slot */
+      background-color: rgba(255, 255, 255, 0.7); /* Added subtle background */
+      padding: 0.2rem 0.5rem; /* Added padding */
+      border-radius: 4px; /* Added rounded corners */
+      margin-right: 0.5rem; /* Added spacing */
     }
     
     .slot-content {
@@ -430,7 +559,7 @@
       font-size: 0.85rem; /* Slightly smaller */
       margin-top: 0rem; /* Remove space below the tab */
       /* Mix blend mode can sometimes help text contrast on varied backgrounds, but can be complex */
-      /* mix-blend-mode: difference; */ /* Experiment if needed */
+      /* mix-blend-mode: difference; /* Experiment if needed */
     }
     
     /* Remove section-color-* classes as we'll use inline styles */
@@ -476,78 +605,324 @@
         margin-right: 0.5rem;
       }
     }
+
+    @media (max-width: 1229px) {
+      body {
+        padding-top: 0; /* Remove space reserved for fixed banner */
+        overflow: hidden; /* Prevent body scrollbars when columns handle scrolling */
+      }
+
+      /* Hide banner image in container on mobile */
+      .container img {
+        display: none;
+      }
+
+      .layout-wrapper {
+        display: flex;
+        height: 100vh; /* Make wrapper fill viewport height */
+      }
+
+      .left-column {
+        width: 280px; /* Fixed width for left column */
+        flex-shrink: 0;
+        padding: 1rem;
+        height: 100vh; /* Fill viewport height */
+        overflow-y: auto; /* Allow left column to scroll if needed */
+        position: sticky; /* Keep left column visible */
+        top: 0;
+        background-color: #f9f8f2; /* Updated background color */
+        border-right: 1px solid var(--border);
+        position: relative; /* For animation container positioning */
+      }
+
+      /* Hide banner in left column */
+      .left-column .site-banner {
+        display: none;
+      }
+
+      .right-column {
+        flex-grow: 1; /* Take remaining width */
+        height: 100vh; /* Fill viewport height */
+        overflow-y: auto; /* Allow right column (schedule) to scroll */
+        padding: 1.5rem 2rem; /* Add padding for content */
+      }
+
+      .site-nav {
+        position: static; /* Override fixed positioning */
+        padding: 0; /* Remove original padding */
+        position: relative; /* For z-index stacking */
+        z-index: 1; /* Place above animation */
+      }
+
+      .nav-animation-container {
+        display: block; /* Show animation on mobile */
+        position: fixed; /* Fixed to viewport */
+        top: 0;
+        left: 0;
+        width: 280px; /* Match left column width */
+        height: 100vh; /* Full viewport height */
+        z-index: 0; /* Place behind content */
+      }
+
+      .site-nav a {
+         /* Styles mostly okay, maybe adjust margin */
+         margin-bottom: 0.75rem;
+         position: relative; /* Ensure links appear above animation */
+         z-index: 1;
+      }
+
+      /* Adjust Banner for Sidebar */
+      .site-banner-placeholder .site-banner {
+        /* Styles are set by JS, but ensure no conflicting CSS */
+        position: static !important; /* Ensure it's not fixed */
+        height: auto !important;
+        width: 100% !important;
+        margin-top: 1rem !important; /* Ensure space */
+        z-index: auto; /* Reset z-index */
+      }
+
+      .site-banner img {
+        object-fit: contain; /* Ensure full image is visible */
+        max-height: 300px; /* Limit banner height in sidebar */
+      }
+
+      .scroll-down-button {
+        display: none !important; /* Hide button moved by JS, but CSS backup */
+      }
+
+      /* Adjust Container for Right Column */
+      .container {
+        margin: 0 auto; /* Remove top margin, keep centered horizontally if needed */
+        max-width: 100%; /* Allow container to fill right column */
+        padding: 1rem; /* Adjust padding if needed */
+        height: auto; /* Let content define height */
+        box-shadow: none; /* Remove shadow if desired */
+        border-radius: var(--border-radius-large); /* Keep rounding */
+        /* Ensure container background is distinct from right-column padding area */
+        background-color: var(--white);
+        position: relative; /* Reset z-index context if needed */
+        z-index: auto;
+      }
+
+      /* Adjust sticky time labels for new scrolling context */
+      .time-labels {
+        top: 0; /* Stick to the top of the scrolling right column */
+        z-index: 100; /* Ensure it's above schedule content */
+      }
+
+      /* Adjust section tab positioning relative to scrolling container */
+       .section-department-tab {
+        /* Might need adjustment if sticking behavior changes */
+        z-index: 10; /* Ensure above section content but below time labels */
+      }
+    }
+
+    /* === Mobile Menu Styles (below 850px) === */
+    #menu-toggle, #close-menu {
+      display: none; /* Hide buttons by default */
+      position: fixed; /* Keep them in place */
+      z-index: 105; /* Above most other elements */
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+      line-height: 38px; /* Center icon vertically */
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      backdrop-filter: blur(3px);
+      color: var(--text);
+    }
+
+    #menu-toggle {
+      top: 1rem;
+      left: 1rem;
+    }
+
+    #close-menu {
+      top: 1rem;
+      right: 1rem; /* Positioned relative to the sliding menu */
+      /* Override fixed positioning when inside the column */
+      position: absolute;
+    }
+
+    @media (max-width: 849px) {
+      .layout-wrapper {
+        /* On mobile, layout-wrapper doesn't need flex */
+        display: block;
+      }
+
+      #menu-toggle {
+        display: block; /* Show hamburger on mobile */
+      }
+
+      .left-column {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 280px; /* Or your preferred width */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 102; /* Above content, below buttons */
+        background-color: #f9f8f2; /* Updated background color */
+        border-right: 1px solid var(--border);
+        overflow: hidden; /* Prevent overflow */
+        /* overflow-y: auto; Allow vertical scrolling for content */
+        padding-top: 4rem; /* Space for close button */
+      }
+
+      .left-column.open {
+        transform: translateX(0);
+      }
+
+      .left-column.open #close-menu {
+         display: block; /* Show close button only when menu is open */
+      }
+
+      .right-column {
+        width: 100%;
+        height: auto; /* Allow content to determine height */
+        overflow-y: visible; /* Reset overflow */
+        padding: 1rem; /* Adjust padding */
+        padding-top: 4rem; /* Add padding to avoid content going under fixed menu toggle */
+      }
+
+      .right-column #menu-toggle {
+        /* Already positioned fixed, no extra style needed here */
+      }
+
+      .container {
+        margin-top: 0; /* Remove margin pushed by banner */
+        padding-top: 1rem; /* Adjust if needed */
+      }
+
+      /* Hide banner elements that don't make sense in sidebar */
+      .left-column .site-banner .scroll-down-button {
+          display: none !important;
+      }
+
+       /* Ensure banner image fits */
+       .left-column .site-banner img {
+         max-height: 200px; /* Further reduce height */
+         object-fit: contain;
+       }
+
+       /* Adjust nav links if needed */
+       .left-column .site-nav {
+         margin-top: 1rem; /* Add space below close button */
+       }
+    }
+    /* === End Mobile Menu Styles === */
+
+    @media (min-width: 1230px) {
+      .nav-animation-container {
+        display: none; /* Hide the animation container on wide screens */
+      }
+    }
   </style>
 </head>
 <body>
   <div class="site-banner">
     <img src="/public/assets/banner.png" alt="IMA / ITP Thesis Capstone Banner" class="logo">
-    <!-- Button to scroll down to the schedule -->
     <button id="viewScheduleBtn" class="scroll-down-button">View Schedule</button>
   </div>
-  <nav class="site-nav">
-    <a href="livestream.html">Livestream</a>
-    <a href="http://itp.nyu.edu/thesis/archive" target="_blank">Thesis Archive</a>
-  </nav>
 
-  <div class="container">
-    <h1>Capstone / Thesis Week Schedule</h1>
-    
-    <div class="tabs">
-      <button class="tab-button active" data-day="monday">Monday, May 5</button>
-      <button class="tab-button" data-day="tuesday">Tuesday, May 6</button>
-      <button class="tab-button" data-day="wednesday">Wednesday, May 7</button>
-      <button class="tab-button" data-day="thursday">Thursday, May 8</button>
-      <button class="tab-button" data-day="friday">Friday, May 9</button>
+  <main class="layout-wrapper">
+    <div class="left-column">
+      <div class="nav-animation-container">
+        <div class="nav-rectangle">
+          <img src="./public/assets/banner.png" alt="IMA / ITP Thesis Capstone Banner" />
+        </div>
+        <div class="nav-rectangle">
+          <img src="./public/assets/banner.png" alt="IMA / ITP Thesis Capstone Banner" />
+        </div>
+        <div class="nav-rectangle">
+          <img src="./public/assets/banner.png" alt="IMA / ITP Thesis Capstone Banner" />
+        </div>
+        <div class="nav-rectangle">
+          <img src="./public/assets/banner.png" alt="IMA / ITP Thesis Capstone Banner" />
+        </div>
+        <div class="nav-rectangle">
+          <img src="./public/assets/banner.png" alt="IMA / ITP Thesis Capstone Banner" />
+        </div>
+        <div class="nav-rectangle">
+          <img src="./public/assets/banner.png" alt="IMA / ITP Thesis Capstone Banner" />
+        </div>
+      </div>
+      <button id="close-menu" aria-label="Close menu">&times;</button>
+      <nav class="site-nav">
+        <a href="livestream.html">Livestream</a>
+        <a href="http://itp.nyu.edu/thesis/archive" target="_blank">Thesis Archive</a>
+      </nav>
+      <div class="site-banner-placeholder"></div>
     </div>
-    
-    <div id="monday" class="schedule visible">
-      <h2>Monday, May 5</h2>
-      <div class="timeline">
-        <div class="slots">
-          <!-- Slots will be generated by JavaScript -->
+
+    <div class="right-column">
+      <button id="menu-toggle" aria-label="Open menu">&#9776;</button>
+      <div class="container">
+        <img style="border-radius: 20px; margin-bottom: 1rem" width="100%" src="./public/assets/banner.png" alt="IMA / ITP Thesis Capstone Banner" />
+        
+        <div class="tabs">
+          <button class="tab-button active" data-day="monday">Monday, May 5</button>
+          <button class="tab-button" data-day="tuesday">Tuesday, May 6</button>
+          <button class="tab-button" data-day="wednesday">Wednesday, May 7</button>
+          <button class="tab-button" data-day="thursday">Thursday, May 8</button>
+          <button class="tab-button" data-day="friday">Friday, May 9</button>
+        </div>
+        
+        <div id="monday" class="schedule visible">
+          <h2>Monday, May 5</h2>
+          <div class="timeline">
+            <div class="slots">
+              <!-- Slots will be generated by JavaScript -->
+            </div>
+          </div>
+        </div>
+        
+        <div id="tuesday" class="schedule">
+          <h2>Tuesday, May 6</h2>
+          <div class="timeline">
+            <div class="slots">
+              <!-- Slots will be generated by JavaScript -->
+            </div>
+          </div>
+        </div>
+        
+        <div id="wednesday" class="schedule">
+          <h2>Wednesday, May 7</h2>
+          <div class="timeline">
+            <div class="slots">
+              <!-- Slots will be generated by JavaScript -->
+            </div>
+          </div>
+        </div>
+        
+        <div id="thursday" class="schedule">
+          <h2>Thursday, May 8</h2>
+          <div class="timeline">
+            <div class="slots">
+              <!-- Slots will be generated by JavaScript -->
+            </div>
+          </div>
+        </div>
+        
+        <div id="friday" class="schedule">
+          <h2>Friday, May 9</h2>
+          <div class="timeline">
+            <div class="slots">
+              <!-- Slots will be generated by JavaScript -->
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    
-    <div id="tuesday" class="schedule">
-      <h2>Tuesday, May 6</h2>
-      <div class="timeline">
-        <div class="slots">
-          <!-- Slots will be generated by JavaScript -->
-        </div>
-      </div>
-    </div>
-    
-    <div id="wednesday" class="schedule">
-      <h2>Wednesday, May 7</h2>
-      <div class="timeline">
-        <div class="slots">
-          <!-- Slots will be generated by JavaScript -->
-        </div>
-      </div>
-    </div>
-    
-    <div id="thursday" class="schedule">
-      <h2>Thursday, May 8</h2>
-      <div class="timeline">
-        <div class="slots">
-          <!-- Slots will be generated by JavaScript -->
-        </div>
-      </div>
-    </div>
-    
-    <div id="friday" class="schedule">
-      <h2>Friday, May 9</h2>
-      <div class="timeline">
-        <div class="slots">
-          <!-- Slots will be generated by JavaScript -->
-        </div>
-      </div>
-    </div>
-  </div>
-  
+  </main>
+
   <script>
-    document.addEventListener('DOMContentLoaded', async function() { // Added async
+    document.addEventListener('DOMContentLoaded', async function() {
       const tabs = document.querySelectorAll('.tab-button');
       const schedules = document.querySelectorAll('.schedule');
       const totalSectionColors = 4; // No longer needed for cycling
@@ -1071,8 +1446,152 @@
           tabs[0].click();
       }
 
-      // Remove the old functions no longer needed
-      // populateSchedule, consolidateEmptySlotsForDay, applyTimeBandClasses, removeOriginalHiddenSlots, wrapSections are replaced
+      // Create additional rectangles to ensure continuous stream
+      const navAnimationContainer = document.querySelector('.nav-animation-container');
+      if (navAnimationContainer) {
+        // Clear existing rectangles
+        navAnimationContainer.innerHTML = '';
+        
+        // Create rectangles with appropriate positions and delays
+        const rectanglesNeeded = 6; // Fixed number of rectangles for full coverage
+        
+        // Create rectangles with appropriate positions and delays
+        for (let i = 0; i < rectanglesNeeded; i++) {
+          const rect = document.createElement('div');
+          rect.classList.add('nav-rectangle');
+          
+          // Position each rectangle vertically
+          rect.style.top = `${i * 100}%`;
+          
+          // Create and add the image
+          const img = document.createElement('img');
+          img.src = './public/assets/banner.png';
+          img.alt = 'IMA / ITP Thesis Capstone Banner';
+          rect.appendChild(img);
+          
+          navAnimationContainer.appendChild(rect);
+        }
+      }
+
+      // <<< MOVE BANNER LOGIC >>>
+      function moveBannerToSidebar() {
+        const banner = document.querySelector('body > .site-banner'); // Select banner only if it's a direct child of body
+        const bannerPlaceholder = document.querySelector('.left-column .site-banner-placeholder');
+        const leftCol = document.querySelector('.left-column');
+
+        if (banner && bannerPlaceholder && leftCol) {
+          // Check if the banner is not already in the placeholder (to prevent moving it multiple times)
+          if (!leftCol.contains(banner)) {
+            console.log("Moving banner to sidebar");
+            bannerPlaceholder.appendChild(banner);
+            // Ensure styles are appropriate for sidebar
+            banner.style.position = 'static';
+            banner.style.height = 'auto';
+            banner.style.width = '100%';
+            banner.style.marginTop = '1rem'; // Add space below nav
+            const scrollBtn = banner.querySelector('.scroll-down-button');
+            if (scrollBtn) scrollBtn.style.display = 'none'; // Hide scroll button
+            banner.classList.remove('blurred'); // Remove blur when banner is in sidebar
+          }
+        } else {
+            // console.log("Banner or placeholder not found for moving.");
+        }
+      }
+
+      function moveBannerToTop() {
+          const banner = document.querySelector('.site-banner-placeholder .site-banner'); // Select banner only if it's inside placeholder
+          const body = document.querySelector('body');
+
+          if(banner && body) {
+            console.log("Moving banner to top");
+             // Check if the banner is not already a direct child of body
+             if (banner.parentElement !== body) {
+                body.insertBefore(banner, body.firstChild); // Move banner back to the top of body
+                // Restore original styles (or rely on CSS rules)
+                banner.style.position = ''; // Let CSS handle it
+                banner.style.height = '';
+                banner.style.width = '';
+                banner.style.marginTop = '';
+                const scrollBtn = banner.querySelector('.scroll-down-button');
+                if (scrollBtn) scrollBtn.style.display = ''; // Restore scroll button
+             }
+          } else {
+            // console.log("Banner or body not found for restoring.");
+          }
+      }
+
+      // Check screen width and move banner accordingly
+      const mediaQuery = window.matchMedia('(min-width: 1230px)');
+
+      function handleBannerPlacement(e) {
+          if (e.matches) {
+              // Wide screen (>= 1230px): move banner back to top (original layout)
+              moveBannerToTop();
+              // Add scroll listener for blur effect
+              window.addEventListener('scroll', handleBannerBlur);
+          } else {
+              // Narrow screen (< 1230px): move banner to sidebar (two-column layout)
+              moveBannerToSidebar();
+              // Remove scroll listener when in mobile view
+              window.removeEventListener('scroll', handleBannerBlur);
+          }
+      }
+
+      // Function to handle banner blur on scroll
+      function handleBannerBlur() {
+          const banner = document.querySelector('body > .site-banner');
+          const scheduleContainer = document.querySelector('.container');
+          
+          if (banner && scheduleContainer) {
+              const scheduleRect = scheduleContainer.getBoundingClientRect();
+              const viewportHeight = window.innerHeight;
+              
+              // Add blur when schedule is in view
+              if (scheduleRect.top < viewportHeight) {
+                  banner.classList.add('blurred');
+              } else {
+                  banner.classList.remove('blurred');
+              }
+          }
+      }
+
+      // Initial check
+      handleBannerPlacement(mediaQuery);
+
+      // Listen for changes
+      mediaQuery.addEventListener('change', handleBannerPlacement);
+      // <<< END MOVE BANNER LOGIC >>>
+
+      // <<< MOBILE MENU TOGGLE LOGIC >>>
+      const menuToggleBtn = document.getElementById('menu-toggle');
+      const closeMenuBtn = document.getElementById('close-menu');
+      const leftColumn = document.querySelector('.left-column');
+
+      if (menuToggleBtn && closeMenuBtn && leftColumn) {
+        menuToggleBtn.addEventListener('click', () => {
+          leftColumn.classList.add('open');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+          leftColumn.classList.remove('open');
+        });
+
+        // Optional: Close menu if clicking outside of it (on the main content area)
+        // Be careful with this if there are clickable elements in the right column near the edge
+        /*
+        const rightColumn = document.querySelector('.right-column');
+        if (rightColumn) {
+          rightColumn.addEventListener('click', (event) => {
+            // Check if the left column is open and the click was not inside the left column
+            // and not on the menu toggle button itself
+            if (leftColumn.classList.contains('open') && !leftColumn.contains(event.target) && event.target !== menuToggleBtn) {
+              leftColumn.classList.remove('open');
+            }
+          });
+        }
+        */
+      }
+      // <<< END MOBILE MENU TOGGLE LOGIC >>>
     });
   </script>
 </body>
