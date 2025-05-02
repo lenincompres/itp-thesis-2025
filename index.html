@@ -182,7 +182,7 @@
       overflow: hidden;
     }
 
-    .site-nav a[href="livestream.html"] {
+    .site-nav a.livestream-link {
       background: linear-gradient(
         135deg,
         rgba(255, 182, 193, 0.2),  /* Pastel Pink */
@@ -851,7 +851,7 @@
       </div>
       <button id="close-menu" aria-label="Close menu">&times;</button>
       <nav class="site-nav">
-        <a href="livestream.html">Livestream</a>
+        <a href="livestream.html" class="livestream-link">Livestream</a>
         <a href="http://itp.nyu.edu/thesis/archive" target="_blank">Thesis Archive</a>
       </nav>
       <div class="site-banner-placeholder"></div>
@@ -1481,6 +1481,7 @@
           if (!leftCol.contains(banner)) {
             console.log("Moving banner to sidebar");
             bannerPlaceholder.appendChild(banner);
+            banner.style.opacity = '0';
             // Ensure styles are appropriate for sidebar
             banner.style.position = 'static';
             banner.style.height = 'auto';
