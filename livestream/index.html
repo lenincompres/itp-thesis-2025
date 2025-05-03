@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="https://itp.nyu.edu/favicon.ico"/>
+    <link href="https://vjs.zencdn.net/7.18.1/video-js.css" rel="stylesheet" />
+		<script type="text/javascript" src="https://wowza.itp.io:8443/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css"/>    
+    <title>NYU ITP / IMA Thesis Live Stream</title>
+    
+    <script>     
+      var socket = io.connect("https://wowza.itp.io:8443/");
+
+      socket.on('connect', function() {
+        console.log("Connected " + socket.id);
+      });
+
+      socket.on('update', function(data) {
+        console.log("update: " + data);
+	setTimeout(function () {
+        	document.getElementById("t1").innerHTML = data;
+	}, 30000);
+      });
+      
+    </script>
+  </head>
+  <body>
+    
+    <div class="header">
+      <div class="title-container">
+        <h2 class="chip">ITP / IMA <span class="thesis">Thesis & Capstone</span> <span class="livestream">Livestream</span> <span class="year">2024</span></h2>
+      </div>      
+    </div>
+
+    <div class="content-container">
+      <div class="content">
+        <video
+          id="my-video"
+          class="video-js"
+          controls
+          autoplay="true"
+          preload="auto"
+          width="1600"
+          height="900"
+          poster="MY_VIDEO_POSTER.jpg"
+          webkit-playsinline 
+          playsinline
+          data-setup="{}"
+        >
+        <source src="https://ddap97eg6og3o.cloudfront.net/livecaching/stream/playlist.m3u8" type="application/x-mpegURL" />
+        <!-- <source src="https://ddap97eg6og3o.cloudfront.net/live/stream/playlist.m3u8" type="application/x-mpegURL" /> -->
+        <!-- <source src="https://wowza.itp.io/livecaching/stream/playlist.m3u8" type="application/x-mpegURL" /> -->
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a
+            web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+          </p>
+        </video>
+    
+        <iframe src="https://rocketchat.itp.io/channel/general?layout=embedded" width="500px" height="700px"></iframe>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div id="footerContent" class="footer-content visible">
+        <p id="text">
+          <span id="t1"></span>
+          <span id="t2"></span>
+          <span id="t3"></span>
+        </p>
+      </div>
+    </div>
+    
+    <script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
+  </body>
+</html>

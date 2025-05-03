@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="https://itp.nyu.edu/favicon.ico"/>
+    <link href="https://vjs.zencdn.net/7.18.1/video-js.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css"/>    
+    <title>NYU ITP / IMA Thesis Live Stream</title>
+    <script src="https://kit.fontawesome.com/0df185f71c.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    
+    <script>     
+      const SERVER_URL = "https://thesisproxy.cezar.io"
+
+      var currData = []
+      var isOverride = false
+      var overrideMessage = ""
+
+      function fetchData() {
+        $.ajax({
+          url: SERVER_URL + "/announcements",
+          type: "GET",
+          dataType: "json",
+          success: function(response) {
+            let allData = response.data
+            let data = allData
+            let newOverride = response.isOverride
+            let newOverrideMessage = response.overrideMessage
+
+            if (newOverride) {
+              if (newOverride != isOverride || newOverrideMessage != overrideMessage) {
+
+                $("#footerContent").removeClass("visible")
+                $("#footerContent").addClass("invisible")
+
+                setTimeout(() => {
+                  $("#t1").html(`●&emsp;&emsp;&emsp;&emsp;&emsp;${newOverrideMessage}&emsp;&emsp;&emsp;&emsp;&emsp;●`)
+                  $("#t2").html(``)
+                  $("#t3").html(``)
+                  $("#footerContent").removeClass("invisible")
+                  $("#footerContent").addClass("visible")            
+                }, 500)                
+              } else {
+
+              }
+            } else {
+              console.log('all data: ', allData)
+              
+              let index = response.currentIndex
+
+              let updates = newOverride != isOverride
+              if (currData.length != data.length) updates = true              
+              for (let i = 0; i < 3; i++) {
+                if (currData[i] != data[i]) updates = true
+              }
+
+              if (!updates) return
+
+              $("#footerContent").removeClass("visible")
+              $("#footerContent").addClass("invisible")
+
+              setTimeout(() => {
+                if (data[0] && data[0].length > 0) {
+                  $("#t1").html(`●&emsp;&emsp;&emsp;&emsp;&emsp;Right now: ${data[0]}&emsp;&emsp;&emsp;&emsp;&emsp;●`)
+                } else {
+                  $("#t1").html("")
+                }
+
+                if (data[1] && data[1].length > 0) {
+                  $("#t2").html(`&emsp;&emsp;&emsp;&emsp;&emsp;Up next: ${data[1]}&emsp;&emsp;&emsp;&emsp;&emsp;●`)
+                } else {
+                  $("#t2").html("")
+                }
+
+                if (data[2] && data[2].length > 0) {
+                  $("#t3").html(`&emsp;&emsp;&emsp;&emsp;&emsp;Afterwards: ${data[2]}&emsp;&emsp;&emsp;&emsp;&emsp;●`)
+                } else {
+                  $("#t3").html("")
+                }
+
+                $("#footerContent").removeClass("invisible")
+                $("#footerContent").addClass("visible")            
+              }, 500)
+            }
+
+            isOverride = newOverride
+            overrideMessage = newOverrideMessage
+            currData = data
+          },
+          error: function(err) {
+            console.error("Error: ", err)
+          }
+        })
+      }
+
+
+      $(document).ready(function() {
+        fetchData()
+        setInterval(fetchData, 10000)      
+        
+        videojs.addLanguage('en', {"The media could not be loaded, either because the server or network failed or because the format is not supported.": "The ITP / IMA Thesis livestream is currently offline, please refresh the page or check back later."});
+      });
+
+    </script>
+  </head>
+  <body>
+    
+    <div class="header">
+      <div class="title-container">
+        <h2 class="chip">ITP / IMA <span class="thesis">Thesis & Capstone</span> <span class="livestream">Livestream</span> <span class="year">2022</span></h2>
+      </div>      
+      <div class="archive-link no-mobile">
+        <a href="https://itp.nyu.edu/thesis2022/" target="_blank">ITP Thesis Archive <i class="fa-solid fa-arrow-up-right-from-square"></i></a> &nbsp;&nbsp;
+        <a href="https://itp.nyu.edu/ima/projects/" target="_blank">IMA Capstone Archive <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+    </div>
+
+    <div class="content-container">
+      <div class="content">
+        <video
+          id="my-video"
+          class="video-js"
+          controls
+          autoplay="true"
+          preload="auto"
+          width="1600"
+          height="900"
+          poster="MY_VIDEO_POSTER.jpg"
+          webkit-playsinline 
+          playsinline
+          data-setup="{}"
+        >
+          <source src="https://ddap97eg6og3o.cloudfront.net/live/stream/playlist.m3u8" type="application/x-mpegURL" />          
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a
+            web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+          </p>
+        </video>
+    
+        <iframe src="https://thesis2021chat.cezar.io/channel/general?layout=embedded" width="500px" height="700px"></iframe>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div id="footerContent" class="footer-content visible">
+        <p id="text">
+          <span id="t1"></span>
+          <span id="t2"></span>
+          <span id="t3"></span>
+        </p>
+      </div>
+    </div>
+    
+    <script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
+  </body>
+</html>
